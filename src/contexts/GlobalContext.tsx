@@ -8,7 +8,7 @@ type GlobalContextType = {
 export const GlobalContext = React.createContext<GlobalContextType>(null as any);
 
 export const GlobalProvider: React.FC = ({ children }) => {
-  const [apiUrl, setApiUrl] = useState('http://localhost:4000');
+  const [apiUrl, setApiUrl] = useState('http://backend-onboarding-project.herokuapp.com');
 
   return (
     <GlobalContext.Provider
