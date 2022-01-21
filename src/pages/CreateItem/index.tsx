@@ -11,7 +11,10 @@ import './style.less';
 const CreateItem: React.FC = () => {
   // const history = useHistory();
   const { apiUrl } = useContext(GlobalContext);
+
   const [name, setName] = useState('');
+  const descriptionState = useState('');
+  const [price, setPrice] = useState('');
 
   return (
     <>
@@ -19,11 +22,13 @@ const CreateItem: React.FC = () => {
       <div className="createItem">
         <p className="createItem-description">Add an item to the world’s greatest store</p>
         <TextBox inputType="text" value={name} label="name" onChange={(t) => setName(t)} />
-
+        <TextBox inputType="text" value={descriptionState[0]} label="description" onChange={(t) => descriptionState[1](t)} />
+        <TextBox inputType="text" value={price} label="price" onChange={(t) => setPrice(t)} />
         <Button
           text="Create Item"
           onClick={async () => {
-            await createItem(apiUrl, name, 'description', 0);
+            const priceNumber = parseFloat(price);
+            await createItem(apiUrl, name, descriptionState[0], priceNumber);
             // history.push(pathLinks.home); // when we're done, go home to see the new item!
           }}
         />

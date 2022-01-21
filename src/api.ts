@@ -42,7 +42,7 @@ const emptyOrder = {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const getItems = async (apiUrl: string): Promise<Item[]> => {
   const response = await fetch(`${apiUrl}/items`);
-  const data = response.json();
+  const data = await response.json();
   return data;
 };
 
